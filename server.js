@@ -10,10 +10,18 @@ db();
 
 const allowedOrigins = ['http://localhost:3000', 'https://www.esibiti.com'];
 
+// CORS options
+const corsOptions = {
+    origin: '*',  // Allows all origins 
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,  
+    optionsSuccessStatus: 204
+  };
+
 
 // Middleware to parse JSON and URL-encoded payloads
 app.use(express.json());
-app.use(cors({ credentials: true, origin: allowedOrigins }));
+app.use(cors(corsOptions))
 
 app.use(express.urlencoded({ extended: true }));
 
