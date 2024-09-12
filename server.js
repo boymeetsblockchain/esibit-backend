@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const error = require('./middlewares/errorHandler')
 const dotenv = require('dotenv').config();
 const db = require('./db/db');
 const userRoute = require('./routes/userRoute');
@@ -22,6 +23,7 @@ const corsOptions = {
 // Middleware to parse JSON and URL-encoded payloads
 app.use(express.json());
 app.use(cors(corsOptions))
+app.use(error)
 
 app.use(express.urlencoded({ extended: true }));
 
